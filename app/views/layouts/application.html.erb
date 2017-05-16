@@ -2,12 +2,15 @@
 <html>
   <head>
     <title>Oof</title>
+    <base href="/">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+
+    <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <body ng-app="Main">
     <%= yield %>
   </body>
 </html>
