@@ -19,6 +19,8 @@ app.config([
 }])
 
 app.controller('DashboardCtrl', ['$scope', ($scope) => {
+  $scope.days = 26
+  $scope.employees = [{"name":"foo bar"}]
   console.log('dashboard controller')
 }])
 
