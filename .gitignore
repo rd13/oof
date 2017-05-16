@@ -16,4 +16,6 @@
 /node_modules
 /yarn-error.log
 
+/vendor/assets/bower_components
+
 .byebug_history
