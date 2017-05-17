@@ -31,12 +31,16 @@ app.factory('employees', ['$http', '$q', ($http, $q) => {
 }])
 
 app.controller('DashboardCtrl', ['$scope', 'employees', 'moment', ($scope, employees, moment) => {
-  $scope.curDate = moment().date(1).month(11).year(2017).toDate()
-  $scope.days = [...Array(31)]
+  let currentDate = moment().date(1)
+  $scope.currentDate = currentDate
+  $scope.currentMonth = currentDate.month()
+  $scope.monthList = moment.months()
+  $scope.daysinmonth = $scope.currentDate.daysInMonth()
+  $scope.days = [...Array(31).keys()]
+  $scope.employees = []
+
   employees.getAll().then( (data) => {
-    console.log(data)
     $scope.employees = data
   })
-  console.log('dashboard controller', $scope.employees)
 }])
 

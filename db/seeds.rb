@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Employee.create!([
-  { name: 'Foo Bar' },
-  { name: 'Pippo' }
+  { name: "#{Faker::Name.first_name} #{Faker::Name.last_name}" },
+  { name: "#{Faker::Name.first_name} #{Faker::Name.last_name}" },
+  { name: "#{Faker::Name.first_name} #{Faker::Name.last_name}" },
+  { name: "#{Faker::Name.first_name} #{Faker::Name.last_name}" },
+  { name: "#{Faker::Name.first_name} #{Faker::Name.last_name}" }
 ])

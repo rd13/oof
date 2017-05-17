@@ -1,9 +1,27 @@
 <div class="page-header">
-  <h3>dashboard.html {{ curDate }}</h3>
-  <table>
-    <tr ng-repeat="employee in employees">
+  <h3>dashboard.html {{ daysinmonth }}</h3>
+  <div class="form-group">
+    <label for="month">Month:</label>
+    <select class="form-control" id="month" ng-options="index*1 as month for (index, month) in monthList" ng-model="currentMonth">
+    </select>
+
+    <label for="year">Year:</label>
+    <select class="form-control" id="year">
+      <option value="2017">2017</option>
+    </select>
+  </div>
+  <div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th></th>
+      <th ng-repeat="day in days">{{ day+1 }}</th>
+    </tr>
+    </thead>
+    <tr ng-repeat="employee in employees | orderBy:'name'">
       <th>{{ employee.name }}</th>
-      <td ng-repeat="day in days track by $index">.</td>
+      <td ng-repeat="day in days" ng-model="day"></td>
     </tr>
   </table>
+  </div>
 </div>
