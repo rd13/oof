@@ -1,8 +1,9 @@
 <div class="page-header">
-  <h3>dashboard.html</h3>
+  <h3>dashboard.html {{ curDate }}</h3>
   <table>
     <tr ng-repeat="employee in employees">
       <th>{{ employee.name }}</th>
+      <td ng-repeat="day in days track by $index">.</td>
     </tr>
   </table>
 </div>
