@@ -1,8 +1,8 @@
 <div class="page-header">
-  <h3>dashboard.html {{ daysinmonth }}</h3>
+  <h3>{{ daysInMonth }}</h3>
   <div class="form-group">
     <label for="month">Month:</label>
-    <select class="form-control" id="month" ng-options="index*1 as month for (index, month) in monthList" ng-model="currentMonth">
+    <select class="form-control" id="month" ng-options="index*1 as month for (index, month) in monthList" ng-model="currentMonth" ng-change="refreshView(currentMonth)">
     </select>
 
     <label for="year">Year:</label>
@@ -15,12 +15,14 @@
     <thead>
     <tr>
       <th></th>
-      <th ng-repeat="day in days">{{ day+1 }}</th>
+      <th ng-repeat="day in days">{{ day }}</th>
     </tr>
     </thead>
     <tr ng-repeat="employee in employees | orderBy:'name'">
       <th>{{ employee.name }}</th>
-      <td ng-repeat="day in days" ng-model="day"></td>
+      <td ng-repeat="day in days">
+        <div ng-class="getCellClass(employee.absences, day)"></div>
+      </td>
     </tr>
   </table>
   </div>

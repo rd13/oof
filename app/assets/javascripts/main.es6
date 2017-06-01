@@ -31,12 +31,41 @@ app.factory('employees', ['$http', '$q', ($http, $q) => {
 }])
 
 app.controller('DashboardCtrl', ['$scope', 'employees', 'moment', ($scope, employees, moment) => {
-  let currentDate = moment().date(1)
-  $scope.currentDate = currentDate
-  $scope.currentMonth = currentDate.month()
+  // 1st of this month
+  $scope.currentDate = moment().date(1).startOf('day')
+  $scope.currentMonth = $scope.currentDate.month()
+
   $scope.monthList = moment.months()
-  $scope.daysinmonth = $scope.currentDate.daysInMonth()
-  $scope.days = [...Array(31).keys()]
+
+  $scope.refreshView = (m, y) => {
+    $scope.currentDate.month(m || $scope.currentDate.month())
+    $scope.currentDate.year(y || $scope.currentDate.year())
+
+    $scope.daysInMonth = $scope.currentDate.daysInMonth()
+    $scope.days = [...Array($scope.daysInMonth).keys()].map((d) => d+1)
+  }
+
+  $scope.refreshView()
+
+
+
+  $scope.getCellClass = (absences, day) => {
+    let date = $scope.currentDate.date(day)
+    let classList = absences.filter((absence) => {
+      return moment(absence.date).diff(date, 'days') === 0
+    }).map(absence => absence.ab_type)
+    return classList || '';
+  }
+
+  // $scope.updateCurrentMonth = (m) => {
+  //   $scope.currentDate = currentDate.month(m)
+  //   $scope.daysInMonth = currentDate.daysInMonth()
+  //
+  //   $scope.days = [...Array($scope.daysInMonth).keys()]
+  //   console.log($scope.daysInMonth)
+  // }
+
+
   $scope.employees = []
 
   employees.getAll().then( (data) => {
