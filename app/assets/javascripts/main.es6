@@ -47,24 +47,30 @@ app.controller('DashboardCtrl', ['$scope', 'employees', 'moment', ($scope, emplo
 
   $scope.refreshView()
 
-
-
-  $scope.getCellClass = (absences, day) => {
+  $scope.getDayCellClass = (day) => {
     let date = $scope.currentDate.date(day)
-    let classList = absences.filter((absence) => {
-      return moment(absence.date).diff(date, 'days') === 0
-    }).map(absence => absence.ab_type)
+
+    let classList = []
+    
+    if (date.day()===6 || date.day()===0) {
+      classList.push('weekend')
+    }
+
     return classList || '';
+  
   }
 
-  // $scope.updateCurrentMonth = (m) => {
-  //   $scope.currentDate = currentDate.month(m)
-  //   $scope.daysInMonth = currentDate.daysInMonth()
-  //
-  //   $scope.days = [...Array($scope.daysInMonth).keys()]
-  //   console.log($scope.daysInMonth)
-  // }
+  $scope.getDayCellMarkerClass = (absences, day) => {
+    let date = $scope.currentDate.date(day)
 
+    let classList = []
+    
+    classList = classList.concat(absences.filter((absence) => {
+      return moment(absence.date).diff(date, 'days') === 0
+    }).map(absence => absence.ab_type))
+
+    return classList || '';
+  }
 
   $scope.employees = []
 

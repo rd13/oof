@@ -15,10 +15,10 @@
 # ])
 
 Absence.create!([
-  { employee_id: 3, ab_type: 'hol', date: 10.days.from_now.to_datetime },
-  { employee_id: 1, ab_type: 'sick', date: 10.days.from_now.to_datetime },
-  { employee_id: 4, ab_type: 'hol', date: 10.days.from_now.to_datetime },
-  { employee_id: 5, ab_type: 'hol', date: 10.days.from_now.to_datetime },
-  { employee_id: 7, ab_type: 'sick', date: 10.days.from_now.to_datetime },
-  { employee_id: 6, ab_type: 'sick', date: 10.days.from_now.to_datetime }
+  { employee_id: 3, ab_type: 'hol-am', date: 10.days.from_now.to_datetime },
+  { employee_id: 1, ab_type: 'sick-am', date: 10.days.from_now.to_datetime },
+  { employee_id: 4, ab_type: 'hol-am', date: 10.days.from_now.to_datetime },
+  { employee_id: 5, ab_type: 'hol-pm', date: 10.days.from_now.to_datetime },
+  { employee_id: 7, ab_type: 'sick-am', date: 10.days.from_now.to_datetime },
+  { employee_id: 6, ab_type: 'sick-pm', date: 10.days.from_now.to_datetime }
 ])

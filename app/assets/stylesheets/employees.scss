@@ -2,12 +2,53 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.someClass {
-  background-color: grey;
+
+$colour-list: (
+  hol   #4281A4,
+  sick  #FE938C,
+  wfh   #9CAFB7
+);
+
+.table-calendar {
+  table-layout: fixed;
+  thead th { 
+    &:first-child {
+      width: 100px;
+    }
+    &:nth-child(n+2) {
+      width: 25px;
+    }
+  }
+  tr th {
+    &:first-child {
+      text-overflow: ellipsis;
+    }
+  }
 }
-.hol {
-  background-color: lightgrey;
+
+@each $item in $colour-list {
+	.#{nth($item, 1)} {
+		background-color: nth($item, 2);
+	}
+	.#{nth($item, 1)}-am {
+    width: 0;
+    height: 0;
+    border-top: 25px solid nth($item, 2);
+    border-right: 25px solid transparent;
+  }
+	.#{nth($item, 1)}-pm {
+    width: 0;
+    height: 0;
+    border-bottom: 25px solid nth($item, 2);
+    border-left: 25px solid transparent; 
+  }
 }
-.sick {
-  background-color: darkgrey;
+
+.dayCell {
+  padding: 0 !important;
+}
+.dayCellMarker {
+}
+.weekend {
+  background-color: lightyellow;
 }

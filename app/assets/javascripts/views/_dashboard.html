@@ -11,7 +11,7 @@
     </select>
   </div>
   <div class="table-responsive">
-  <table class="table table-bordered">
+  <table class="table table-bordered table-calendar">
     <thead>
     <tr>
       <th></th>
@@ -20,8 +20,8 @@
     </thead>
     <tr ng-repeat="employee in employees | orderBy:'name'">
       <th>{{ employee.name }}</th>
-      <td ng-repeat="day in days">
-        <div ng-class="getCellClass(employee.absences, day)"></div>
+      <td ng-repeat="day in days" class="dayCell" ng-class="getDayCellClass(day)">
+        <div class="dayCellMarker" ng-class="getDayCellMarkerClass(employee.absences, day)">&nbsp;</div>
       </td>
     </tr>
   </table>
