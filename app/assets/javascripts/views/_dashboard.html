@@ -10,20 +10,42 @@
       <option value="2017">2017</option>
     </select>
   </div>
-  <div class="table-responsive">
-  <table class="table table-bordered table-calendar">
-    <thead>
-    <tr>
-      <th></th>
-      <th ng-repeat="day in days">{{ day }}</th>
-    </tr>
-    </thead>
-    <tr ng-repeat="employee in employees | orderBy:'name'">
-      <th>{{ employee.name }}</th>
-      <td ng-repeat="day in days" class="dayCell" ng-class="getDayCellClass(day)">
-        <div class="dayCellMarker" ng-class="getDayCellMarkerClass(employee.absences, day)">&nbsp;</div>
-      </td>
-    </tr>
-  </table>
+
+  <div id="wallchart-container">
+    <table class="wallchart-container">
+
+      <thead>
+        <tr class="header">
+          <td></td>
+          <td>
+            <table class="wallchart-header">
+              <tr>
+                <th class="day-header" ng-repeat="day in days">{{ day }}</th>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      
+      </thead>
+
+      <tbody id="users-container">
+      
+        <tr class=user-list"" ng-repeat="employee in employees | orderBy:'name'">
+          <th class="person">{{ employee.name }}</th>
+          <td class="days-container">
+            <table>
+              <tr>
+                <td class="am" ng-repeat-start="day in days"><span>{{ day }}</span></td>
+                <td class="pm" ng-repeat-end></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </tbody>
+
+      <tfoot></tfoot>
+    </table>
   </div>
+
 </div>

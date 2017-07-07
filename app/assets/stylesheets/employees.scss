@@ -9,7 +9,162 @@ $colour-list: (
   wfh   #9CAFB7
 );
 
+table {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: left;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+table tbody tr.warning {
+  background-color: #ffcccc;
+}
+table th {
+  font-size: 16px;
+  color: #555555;
+  padding-bottom: 20px;
+  font-weight: 500;
+}
+table td {
+  font-size: 15px;
+  font-weight: 400;
+  text-align: left;
+  padding-bottom: 10px;
+  line-height: 35px;
+  vertical-align: middle;
+  color: #555555;
+}
+
+.header {
+  padding-top: 37px;
+}
+
+#wallchart-container {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+#wallchart-container table {
+  width: auto !important;
+  border-collapse: separate;
+}
+
+.wallchart-container tbody td {
+  height: 30px;
+  max-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+.wallchart-container th {
+  text-align: center;
+  width: 30px;
+}
+.wallchart-container td {
+  line-height: 16px !important;
+  padding-bottom: 0 !important;
+}
+.days-container table td span {
+  position: relative;
+  z-index: 998;
+  background: transparent;
+  display: block;
+  text-align: center;
+  height: 15px;
+  max-height: 15px;
+  width: 15px;
+  padding: 0;
+  margin: 0;
+  left: 7px;
+}
+.days-container {
+  vertical-align: top;
+}
+.wallchart-container tr {
+  padding-bottom: 15px;
+}
+.wallchart-container tr.header td {
+  height: 65px;
+}
+table th.person {
+  height: 65px;
+  text-align: left;
+  font-weight: 400;
+}
+.day-header {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #555555;
+  padding-bottom: 0px;
+  font-weight: 400;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.wallchart-container .days-container table td {
+  width: 15px !important;
+  min-width: 15px !important;
+  max-width: 15px !important;
+  height: 30px;
+  font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .table-calendar {
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  .cell {
+    border: 1px solid lightgrey;
+    width: 40px;
+    height: 40px;
+  }
+  div {
+    display: flex;
+  }
+  td {
+    width: 25px; height: 25px;
+  }
   table-layout: fixed;
   thead th { 
     &:first-child {
