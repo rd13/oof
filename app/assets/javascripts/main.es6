@@ -47,7 +47,7 @@ app.controller('DashboardCtrl', ['$scope', 'employees', 'moment', ($scope, emplo
 
   $scope.refreshView()
 
-  $scope.getDayCellClass = (day) => {
+  $scope.getDayCellClass = ( employee, day ) => {
     let date = $scope.currentDate.date(day)
 
     let classList = []
@@ -55,6 +55,10 @@ app.controller('DashboardCtrl', ['$scope', 'employees', 'moment', ($scope, emplo
     if (date.day()===6 || date.day()===0) {
       classList.push('weekend')
     }
+
+    classList = classList.concat(employee.absences.filter((absence) => {
+      return moment(absence.date).diff(date, 'days') === 0
+    }).map(absence => absence.ab_type))
 
     return classList || '';
   

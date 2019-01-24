@@ -115,70 +115,7 @@ table th.person {
   max-width: 15px !important;
   height: 30px;
   font-size: 12px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.table-calendar {
-  flex-direction: column;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  .cell {
-    border: 1px solid lightgrey;
-    width: 40px;
-    height: 40px;
-  }
-  div {
-    display: flex;
-  }
-  td {
-    width: 25px; height: 25px;
-  }
-  table-layout: fixed;
-  thead th { 
-    &:first-child {
-      width: 100px;
-    }
-    &:nth-child(n+2) {
-      width: 25px;
-    }
-  }
-  tr th {
-    &:first-child {
-      text-overflow: ellipsis;
-    }
-  }
+  position: relative;
 }
 
 @each $item in $colour-list {
@@ -186,16 +123,24 @@ table th.person {
 		background-color: nth($item, 2);
 	}
 	.#{nth($item, 1)}-am {
-    width: 0;
-    height: 0;
-    border-top: 25px solid nth($item, 2);
-    border-right: 25px solid transparent;
+    &:before {
+      border-top: 30px solid nth($item, 2);
+      border-right: 30px solid transparent;
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 	.#{nth($item, 1)}-pm {
-    width: 0;
-    height: 0;
-    border-bottom: 25px solid nth($item, 2);
-    border-left: 25px solid transparent; 
+    &:after {
+      border-bottom: 30px solid nth($item, 2);
+      border-left: 30px solid transparent; 
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
   }
 }
 
@@ -205,5 +150,5 @@ table th.person {
 .dayCellMarker {
 }
 .weekend {
-  background-color: lightyellow;
+  background-color: #e4e3e4;
 }

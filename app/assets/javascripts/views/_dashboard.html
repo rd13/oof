@@ -35,8 +35,8 @@
           <td class="days-container">
             <table>
               <tr>
-                <td class="am" ng-repeat-start="day in days"><span>{{ day }}</span></td>
-                <td class="pm" ng-repeat-end></td>
+                <td class="am" ng-class="getDayCellClass( employee, day, 'am' )" ng-repeat-start="day in days"><span>{{ day }}</span></td>
+                <td class="pm" ng-class="getDayCellClass( employee, day, 'pm' )" ng-repeat-end></td>
               </tr>
             </table>
           </td>
